@@ -120,7 +120,9 @@
 							%>
 
 
-							<div class="col-md-4 col-sm-6 item">
+					
+
+<!-- 							<div class="col-md-4 col-sm-6 item">
 								<div class="thumbnail">
 									<div class="caption">
 										<h3>奖学金发放方式收集</h3>
@@ -137,109 +139,7 @@
 										</p>
 									</div>
 								</div>
-							</div>
-							<!--/.item  -->
-
-							<div class="col-md-4 col-sm-6 item">
-								<div class="thumbnail">
-									<div class="caption">
-										<h3>论文查重提交通知</h3>
-										<div>
-											<small><span class="glyphicon glyphicon-time"
-												aria-hidden="true"></span>2015-5-5 16:20</small>
-										</div>
-										<hr />
-										<p>还没提交论文的同学，请再检查一次自己的论文，借鉴的部分重新组织一下，代码如果是自己写的没问题，如果是抄的就改为图片格式。</p>
-										<hr />
-										<p>
-											<a href="#" class="btn btn-primary" role="button">打开通知</a> <a
-												href="#" class="btn btn-default" role="button">确认已读</a>
-										</p>
-									</div>
-								</div>
-							</div>
-							<!--/.item  -->
-
-							<div class="col-md-4 col-sm-6 item">
-								<div class="thumbnail">
-									<div class="caption">
-										<h3>体质测试补测</h3>
-										<div>
-											<small><span class="glyphicon glyphicon-time"
-												aria-hidden="true"></span>2015-5-5 16:20</small>
-										</div>
-										<hr />
-										<p>2015年毕业班学生体质测试补测时间定于5月9日（星期六），上午测室内项目，时间为9：00—11：00，下午测室外项目，时间为2：00-4：00，补测人员名单及成绩已放群共享，请各班班委发给同学们核对，并通知同学们按时参加测试。
-											注：毕业班毕业前最后一次补测名单已发群共享，请留意</p>
-										<hr />
-										<p>
-											<a href="#" class="btn btn-primary" role="button">打开通知</a> <a
-												href="#" class="btn btn-default" role="button">确认已读</a>
-										</p>
-									</div>
-								</div>
-							</div>
-							<!--/.item  -->
-
-							<div class="col-md-4 col-sm-6 item">
-								<div class="thumbnail">
-									<div class="caption">
-										<h3>学工系统启用通知</h3>
-										<div>
-											<small><span class="glyphicon glyphicon-time"
-												aria-hidden="true"></span>2015-5-5 16:20</small>
-										</div>
-										<hr />
-										<p>亲爱的同学您好，本学期学校将全面启动学工系统，大部分日常工作包括评奖评优、勤工助学、党团建设、心理健康、公寓管理、日常考勤、火车票优惠卡、假期留宿等工作，都将通过学工系统来完成，请同学们在校园网环境下（外网不能访问），抽空完善下个人信息，方便今后的信息化建设（截止时间为2015年3月20日）。学工系统登陆方式，首先登陆统一身份认证网址：rz.wzu.edu.cn
-											提示：学生帐名为学号。学生初始化密码默认为身份证号码后6位，如遇字母均为大写。2014级新生密码为微哨密码。如有遗忘，请点击右侧“找回账号或密码”找回。进入到统一身份认证平台之后，选择学工系统，即可进入。</p>
-										<hr />
-										<p>
-											<a href="#" class="btn btn-primary" role="button">打开通知</a> <a
-												href="#" class="btn btn-default" role="button">确认已读</a>
-										</p>
-									</div>
-								</div>
-							</div>
-							<!--/.item  -->
-
-							<div class="col-md-4 col-sm-6 item">
-								<div class="thumbnail">
-									<div class="caption">
-										<h3>奖学金发放方式收集</h3>
-										<div>
-											<small><span class="glyphicon glyphicon-time"
-												aria-hidden="true"></span>2015-5-5 16:20</small>
-										</div>
-										<hr />
-										<p>有两种方式，一种是冲入一卡通，一种是发放至本人工行卡。时间比较急，请尽快确认。如果希望发放至工行卡的同学，请私聊我提供本人工行卡卡号。</p>
-										<hr />
-										<p>
-											<a href="#" class="btn btn-primary" role="button">打开通知</a> <a
-												href="#" class="btn btn-default" role="button">确认已读</a>
-										</p>
-									</div>
-								</div>
-							</div>
-							<!--/.item  -->
-
-							<div class="col-md-4 col-sm-6 item">
-								<div class="thumbnail">
-									<div class="caption">
-										<h3>奖学金发放方式收集</h3>
-										<div>
-											<small><span class="glyphicon glyphicon-time"
-												aria-hidden="true"></span>2015-5-5 16:20</small>
-										</div>
-										<hr />
-										<p>有两种方式，一种是冲入一卡通，一种是发放至本人工行卡。时间比较急，请尽快确认。如果希望发放至工行卡的同学，请私聊我提供本人工行卡卡号。</p>
-										<hr />
-										<p>
-											<a href="#" class="btn btn-primary" role="button">打开通知</a> <a
-												href="#" class="btn btn-default" role="button">确认已读</a>
-										</p>
-									</div>
-								</div>
-							</div>
+							</div> -->
 
 						</div>
 						<!--/.masonry-container  -->
@@ -657,10 +557,10 @@
 						out.print("</a>");
 					}
 				%>
-				<a href="#" class="list-group-item" role="button"><span
+<!-- 				<a href="#" class="list-group-item" role="button"><span
 					class="glyphicon glyphicon-user" aria-hidden="true"></span> 沈君政</a> <a
 					href="#" class="list-group-item" role="button"><span
-					class="glyphicon glyphicon-user" aria-hidden="true"></span> 班主任</a>
+					class="glyphicon glyphicon-user" aria-hidden="true"></span> 班主任</a> -->
 			</div>
 			<div class="span3">
 				<h4>成员</h4>
@@ -671,7 +571,7 @@
 						out.print("</a>");
 					}
 				%>
-				<a href="#" class="list-group-item" role="button"><span
+<!-- 				<a href="#" class="list-group-item" role="button"><span
 					class="glyphicon glyphicon-user" aria-hidden="true"></span> 戴敏 </a> <a
 					href="#" class="list-group-item" role="button"><span
 					class="glyphicon glyphicon-user" aria-hidden="true"></span> 金源琪 </a> <a
@@ -688,7 +588,7 @@
 					href="#" class="list-group-item" role="button"><span
 					class="glyphicon glyphicon-user" aria-hidden="true"></span> 谢贝露 </a> <a
 					href="#" class="list-group-item" role="button"><span
-					class="glyphicon glyphicon-user" aria-hidden="true"></span> 张田璐 </a>
+					class="glyphicon glyphicon-user" aria-hidden="true"></span> 张田璐 </a> -->
 			</div>
 		</div>
 	</div>

@@ -161,7 +161,7 @@ public class ClassDaoImpl implements ClassDao {
 	@Override
 	public List<Class> getall(Connection conn, User user) throws SQLException {
 		List<Class> classlist = new ArrayList<Class>();
-		String sql = "SELECT * FROM class WHERE id NOT IN (SELECT classid FROM `join` WHERE userid = ?)";
+		String sql = "SELECT * FROM class WHERE id NOT IN (SELECT classid FROM jointable WHERE userid = ?)";//`join`
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {

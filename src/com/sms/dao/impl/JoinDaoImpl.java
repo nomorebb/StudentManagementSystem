@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -20,14 +21,14 @@ public class JoinDaoImpl implements JoinDao {
 			int usertype) throws SQLException {
 		// TODO Auto-generated method stub
 		boolean flag = false;
-		String sql = "INSERT INTO `join` (userid,classid,jointime,state,usertype) VALUES (?,?,?,?,?)";
+		String sql = "INSERT INTO jointable (userid,classid,jointime,state,usertype) VALUES (?,?,?,?,?)";
 		PreparedStatement ps = null;
 		try {
 
 			ps = conn.prepareStatement(sql);
 			ps.setLong(1, user.getId());
 			ps.setLong(2, class1.getId());
-			ps.setDate(3, new java.sql.Date(new Date().getTime()));
+			ps.setTimestamp(3, new java.sql.Timestamp(Calendar.getInstance().getTimeInMillis()));
 			ps.setInt(4, state);
 			ps.setInt(5, usertype);
 			if (ps.executeUpdate() > 0) {
@@ -59,7 +60,7 @@ public class JoinDaoImpl implements JoinDao {
 	public boolean delete(Connection conn, Class class1, User user)
 			throws SQLException {
 		boolean flag = false;
-		String sql = "DELETE FROM `join` WHERE classid = ? AND userid = ?";
+		String sql = "DELETE FROM jointable WHERE classid = ? AND userid = ?";
 		PreparedStatement ps = null;
 		try {
 			ps = conn.prepareStatement(sql);
@@ -85,7 +86,7 @@ public class JoinDaoImpl implements JoinDao {
 	@Override
 	public List<Class> getclass(Connection conn, User user) throws SQLException {
 		// TODO Auto-generated method stub
-		String sql = "select * from class where id in (SELECT classid FROM `join` WHERE userid = ?)";
+		String sql = "select * from class where id in (SELECT classid FROM jointable WHERE userid = ?)";
 		PreparedStatement ps = null;
 		List<Class> classlist = new ArrayList<Class>();
 		ResultSet rs = null;
@@ -124,7 +125,7 @@ public class JoinDaoImpl implements JoinDao {
 	@Override
 	public List<User> getuser(Connection conn, Class class1, int usertype)
 			throws SQLException {
-		String sql = "select * from User where id in (SELECT userid FROM `join` WHERE classid = ? AND usertype = ?)";
+		String sql = "select * from user where id in (SELECT userid FROM jointable WHERE classid = ? AND usertype = ?)";
 		PreparedStatement ps = null;
 		List<User> userlist = new ArrayList<User>();
 		ResultSet rs = null;
@@ -163,7 +164,7 @@ public class JoinDaoImpl implements JoinDao {
 	public List<Join> getfromuser(Connection conn, User user)
 			throws SQLException {
 		// TODO Auto-generated method stub
-		String sql = "SELECT * FROM `join` WHERE userid = ?";
+		String sql = "SELECT * FROM jointable WHERE userid = ?";
 		PreparedStatement ps = null;
 		List<Join> joinlist = new ArrayList<Join>();
 		ResultSet rs = null;
