@@ -2,8 +2,6 @@ package com.sms.servlet;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 import com.sms.Entity.User;
 import com.sms.dao.UserDao;
@@ -40,7 +39,10 @@ public class CheckServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		//读取数据
+		request.setCharacterEncoding("UTF8");
+		response.setCharacterEncoding("UTF-8");
+		response.setHeader("content-type", "text/html;charset=UTF-8");
+		// 读取数据
 		String useremail = request.getParameter("inputuseremail");
 		String userpassword = request.getParameter("inputuserpassword");
 		RequestDispatcher rd = null;
@@ -51,28 +53,23 @@ public class CheckServlet extends HttpServlet {
 			rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
 		} else {
-			//将数据存入Model
+			// 将数据存入Model
 			User user = new User();
 			user.setEmail(useremail);
 			user.setPassword(userpassword);
-			//使用DAO与数据库连接，并取得返回值
+			// 使用DAO与数据库连接，并取得返回值
 			boolean bool = false;
 			Connection conn = null;
 			try {
 				conn = ConnectionFactory.getInstance().makeConnection();
 				conn.setAutoCommit(false);
-				ResultSet resultSet = userDao.get(conn, user);
-				while (resultSet.next()) {
+				List<User> userlist = userDao.get(conn, user);
+				if (userlist.size() == 1) {
 					bool = true;
-					user.setName(resultSet.getString("name"));
-					user.setId(resultSet.getLong("id"));
+					user.setName(userlist.get(0).getName());
+					user.setId(userlist.get(0).getId());
 				}
 			} catch (Exception e) {
-				try {
-					conn.rollback();
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
 				e.printStackTrace();
 			} finally {
 				try {
@@ -81,7 +78,7 @@ public class CheckServlet extends HttpServlet {
 					e3.printStackTrace();
 				}
 			}
-			//登录判断
+			// 登录判断
 			if (bool) {
 				HttpSession session = request.getSession();
 				session.setAttribute("useremail", user.getEmail());

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.sms.Entity.User;
 import com.sms.dao.UserDao;
@@ -151,19 +152,37 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public ResultSet get(Connection conn, User user) throws SQLException {
+	public List<User> get(Connection conn, User user) throws SQLException {
 		String sql = "SELECT * FROM user WHERE email = ? AND password = ?";
 		PreparedStatement ps = null;
+		List<User> userlist = new ArrayList<User>();
 		ResultSet rs = null;
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, user.getEmail());
 			ps.setString(2, user.getPassword());
 			rs = ps.executeQuery();
+			while (rs.next()) {
+				user.setName(rs.getString("name"));
+				user.setId(rs.getLong("id"));
+				userlist.add(user);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException logOrIgnore) {
+				}
+			if (ps != null)
+				try {
+					ps.close();
+				} catch (SQLException logOrIgnore) {
+				}
 		}
-		return rs;
+
+		return userlist;
 
 	}
 
@@ -190,6 +209,66 @@ public class UserDaoImpl implements UserDao {
 				}
 				if (rs != null) {
 					rs.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return flag;
+	}
+
+	@Override
+	public String passwordget(Connection conn, User user) throws SQLException {
+		String sql = "SELECT * FROM user WHERE id = ?";
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String password = null;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setLong(1, user.getId());
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				password = rs.getString("password");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return password;
+	}
+
+	@Override
+	public boolean updatepassword(Connection conn, Long id, User user)
+			throws SQLException {
+		boolean flag = false;
+		String sql = "UPDATE user SET password = ? WHERE id = ?";
+		PreparedStatement ps = null;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, user.getPassword());
+			ps.setLong(2, id);
+			if (ps.executeUpdate() > 0) {
+				flag = true;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			flag = false;
+		} finally {
+			try {
+				if (ps != null) {
+					ps.close();
 				}
 			} catch (Exception e2) {
 				e2.printStackTrace();

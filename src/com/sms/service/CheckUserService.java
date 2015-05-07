@@ -1,7 +1,6 @@
 package com.sms.service;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.sms.Entity.User;
@@ -61,6 +60,35 @@ public class CheckUserService {
 				e3.printStackTrace();
 			}
 		}
+		return flag;
+	}
+
+	public boolean passwordcheck(User user, String password) {
+		Connection conn = null;
+		boolean flag = false;
+		try {
+			conn = ConnectionFactory.getInstance().makeConnection();
+			conn.setAutoCommit(false);
+
+			if (password.equals(userDao.passwordget(conn, user))) {
+				flag = true;
+			}
+
+		} catch (Exception e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (Exception e3) {
+				e3.printStackTrace();
+			}
+		}
+
 		return flag;
 	}
 

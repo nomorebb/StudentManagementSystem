@@ -37,7 +37,10 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		
+		request.setCharacterEncoding("UTF8");
+		response.setCharacterEncoding("UTF-8");
+		response.setHeader("content-type", "text/html;charset=UTF-8");
+
 		String useremail = request.getParameter("inputuseremail");
 		String username = request.getParameter("inputusername");
 		String userpassword = request.getParameter("inputuserpassword");
@@ -58,7 +61,7 @@ public class RegisterServlet extends HttpServlet {
 			rd.forward(request, response);
 			return;
 		}
-		
+
 		User user = new User();
 		user.setEmail(useremail);
 		user.setPassword(userpassword);

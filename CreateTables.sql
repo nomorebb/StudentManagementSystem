@@ -54,21 +54,23 @@ ENGINE=InnoDB
 
 
 CREATE TABLE `inform` (
-	`id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '通知ID',
-	`title` VARCHAR(100) NULL COMMENT '通知标题',
+	`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '通知ID',
+	`title` VARCHAR(100) NULL DEFAULT NULL COMMENT '通知标题',
 	`content` TEXT NULL COMMENT '通知内容',
-	`authorid` INT UNSIGNED NULL COMMENT '作者ID',
-	`datetime` DATE NULL COMMENT '发布时间',
-	`endtime` DATE NULL COMMENT '结束时间',
-	`type` INT NULL DEFAULT '0' COMMENT '通知类型',
-	`level` INT NULL DEFAULT '0' COMMENT '通知等级',
+	`authorid` INT(10) UNSIGNED NULL DEFAULT NULL COMMENT '作者ID',
+	`datetime` DATETIME NULL DEFAULT NULL COMMENT '发布时间',
+	`endtime` DATETIME NULL DEFAULT NULL COMMENT '结束时间',
+	`type` INT(11) NULL DEFAULT '0' COMMENT '通知类型',
+	`level` INT(11) NULL DEFAULT '0' COMMENT '通知等级',
 	PRIMARY KEY (`id`),
+	INDEX `FK__user3` (`authorid`),
 	CONSTRAINT `FK__user3` FOREIGN KEY (`authorid`) REFERENCES `user` (`id`)
 )
 COMMENT='通知表'
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
 ;
+
 
 
 CREATE TABLE `informview` (
